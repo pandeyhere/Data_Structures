@@ -7,7 +7,7 @@ public class PrintPermutation {
 
     public static void main(String[] args) {
 
-        String s = "aabc";
+        String s = "ADG";
         Set<String> uniquePermutations = new HashSet<>();
         printPermutation(s, "", uniquePermutations);
         for (String str : uniquePermutations) {

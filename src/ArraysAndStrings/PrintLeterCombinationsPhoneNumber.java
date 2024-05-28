@@ -21,7 +21,7 @@ public class PrintLeterCombinationsPhoneNumber {
         map.put('8', "tuv");
         map.put('9', "wxyz");
 
-        List<String> combinations = printCombinations("2345", map);
+        List<String> combinations = printCombinations("23", map);
 
         for (String str : combinations) {
             System.out.println(str);
@@ -59,8 +59,7 @@ public class PrintLeterCombinationsPhoneNumber {
                 }
 
             }
-            resultList = intermittentList.size() > 0 ? intermittentList : resultList;
-            intermittentList = new ArrayList<String>();
+            resultList = !intermittentList.isEmpty() ? intermittentList : resultList;
 
         }
 

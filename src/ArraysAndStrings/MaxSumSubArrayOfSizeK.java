@@ -9,7 +9,7 @@ public class MaxSumSubArrayOfSizeK {
         for(int windowEnd = 0; windowEnd<=k-1;windowEnd++){
             windowSum += arr[windowEnd];
 
-            if(windowEnd >= k-1){
+            if(windowEnd-windowStart+ 1 >= k){
                 maxSum = Math.max(maxSum,windowSum);
                 windowSum -= arr[windowStart];
                 windowStart++;

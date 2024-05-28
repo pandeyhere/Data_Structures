@@ -15,15 +15,21 @@ public class LengthOfLongestSubstrOfDistinctChars {
 
     public static int lengthOfLongestSubstrDistinctChars (String str){
         int windowStart =0 , maxLength = 0;
-        Map<Character, Integer> charIndexMap = new HashMap<Character, Integer>();
+        Map<Character, Integer> freqMap = new HashMap<Character, Integer>();
 
         for (int windowEnd=0; windowEnd<str.length();windowEnd++){
             Character ch = str.charAt(windowEnd);
-            if(charIndexMap.containsKey(ch)){
-                windowStart = Math.max(windowStart, charIndexMap.get(ch)+1);
+            freqMap.put(ch, freqMap.getOrDefault(ch,0)+1);
 
+            while(freqMap.get(ch)>1){
+                Character rightCharacter = str.charAt(windowStart);
+                freqMap.put(rightCharacter, freqMap.get(rightCharacter)-1);
+                if(freqMap.get(rightCharacter)==0){
+                    freqMap.remove(rightCharacter);
+                }
+                windowStart++;
             }
-            charIndexMap.put(ch,windowEnd);
+
             maxLength = Math.max(maxLength,windowEnd-windowStart+1);
         }
 
